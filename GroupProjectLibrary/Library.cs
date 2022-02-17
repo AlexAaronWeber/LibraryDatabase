@@ -55,10 +55,8 @@ namespace GroupProjectLibrary
 							return input;
 						}
 					}
-				return "Try again";
+				return "";
 		}
-
-
 
 	}
 }

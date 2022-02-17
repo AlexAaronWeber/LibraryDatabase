@@ -38,11 +38,19 @@ while (runProgram)
 
     List<Book> searchResult = library.books.Where(b => b.Title.ToLower().Contains(search) || b.Author.ToLower().Contains(search)).ToList();
 
-
-    foreach(Book b in searchResult)
+    if (search.Length == 0)
     {
-        Console.WriteLine(b.Title);
+        Console.WriteLine("Try again");
     }
+    else
+    {
+        foreach (Book b in searchResult)
+        {
+            Console.WriteLine(b.Title);
+        }
+    } 
+
+    
     
 
 }
