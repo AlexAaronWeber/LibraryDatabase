@@ -46,6 +46,7 @@ namespace GroupProjectLibrary
 		public string GetUserSearch()
 		{
 					Console.WriteLine("Search by author or title keyword");
+
 					string input = Console.ReadLine().ToLower().Trim();
 
 					foreach (Book book in books)
@@ -57,6 +58,19 @@ namespace GroupProjectLibrary
 					}
 				return "";
 		}
+		public void CheckOut (List<Book> Books )
+        {
+			Console.WriteLine($"Please pick the number of the book you'd like to check out 1-{Books.Count} ");
+			int entry = int.Parse(Console.ReadLine());
+
+			if (Books[entry].Status == false )
+            {
+				Books[entry].Status = true;
+				Books[entry].DueDate = DateOnly.FromDateTime(DateTime.Now).AddDays(14);
+
+            }
+        }
+	
 
 	}
 }
