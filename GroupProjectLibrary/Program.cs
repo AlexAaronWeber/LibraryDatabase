@@ -36,3 +36,5 @@ while (runProgram)
     }
 }
     library.CheckOut(library.books);
+
+library.ReturnBook(library.books);

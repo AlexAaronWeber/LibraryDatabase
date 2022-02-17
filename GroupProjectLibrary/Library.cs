@@ -32,13 +32,7 @@ namespace GroupProjectLibrary
 		
 	
 
-	//      public void showTitle(List<Book> books)
-	//{
-	//	foreach (Book b in books)
-	//	{
-	//		Console.WriteLine(b.Title);
-	//	}
-	//}
+
 
 	//-------------------------------
 	//git reset --hard
@@ -76,8 +70,24 @@ namespace GroupProjectLibrary
             {
                 Console.WriteLine($"Unfortunetly, {Books[entry].Title} is already checked out. It should be returned on {Books[entry].DueDate}");
             }
-        }
-	
+
+		}
+		public void ReturnBook(List<Book> ReturnBooks)
+        {
+			Console.WriteLine("Please enter the number for the book you would like to return");
+			int entry = int.Parse(Console.ReadLine())-	1;
+
+			if (ReturnBooks[entry].Status == true)
+			{
+				ReturnBooks[entry].Status = false;
+				ReturnBooks[entry].DueDate = null;
+				Console.WriteLine($"Thank you for returning {ReturnBooks[entry].Title}!");
+			}
+			else if (ReturnBooks[entry].Status == false)
+			{
+				Console.WriteLine($"{ReturnBooks[entry].Title} is not checked out.");
+			}
+		}
 
 	}
 }
