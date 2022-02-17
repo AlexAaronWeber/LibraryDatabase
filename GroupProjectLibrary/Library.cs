@@ -3,10 +3,12 @@ namespace GroupProjectLibrary
 {
 	public class Library
 	{
+
+		//list of books
 		public List<Book> books = new List<Book>() 
 		{
 
-            new Book ("The Prophet", "Kahlil Gibran", true,  DateOnly.FromDateTime(DateTime.Now)),
+            new Book ("The Prophet", "Kahlil Gibran", true, DateOnly.FromDateTime(DateTime.Now)),
 			new Book ("The Midnight Library", "Matt Haig", false),
 			new Book ("Black Cake", "Charmaine Wilkerson", false),
 			new Book ("The Maid", "Nita Prose", true,  DateOnly.FromDateTime(DateTime.Now)),
@@ -21,39 +23,35 @@ namespace GroupProjectLibrary
 			new Book ("The Lovely Bones", "Alice Sebold", true,  DateOnly.FromDateTime(DateTime.Now)),
 		};
 
+		//-----------------------------Methods-----------------------------
 
-        public void DisplayAllBooks()
-        {
-			for (int i = 0; i < books.Count; i++)
-			{
-				Console.WriteLine($"{ i + 1} { books[i].ToString()}");
-			}
-		}
-		
-	
-
-
-
-	//-------------------------------
-	//git reset --hard
-	//used to remove chanes oyu made on your project, so oyu can copy whats on the repo
-
-
-	public string GetUserSearch()
+	//display books
+	public void DisplayAllBooks()
+    {
+		for (int i = 0; i < books.Count; i++)
 		{
-					Console.WriteLine("Search by author or title keyword");
-
-					string input = Console.ReadLine().ToLower().Trim();
-
-					foreach (Book book in books)
-                    {
-						if (book.Author.ToLower().Contains(input) || book.Title.ToLower().Contains(input))
-							{ 
-								return input;						
-							}	
-					}
-					return "";
+			Console.WriteLine($"{ i + 1} { books[i].ToString()}");
 		}
+	}
+
+		//get search
+	public string GetUserSearch()
+	{
+		Console.WriteLine("Search by author or title keyword");
+
+		string input = Console.ReadLine().ToLower().Trim();
+
+		foreach (Book book in books)
+        {
+			if (book.Author.ToLower().Contains(input) || book.Title.ToLower().Contains(input))
+			{ 
+				return input;						
+			}	
+		}
+			return "";
+	}
+
+		//checkout
 		public void CheckOut (List<Book> Books )
         {
 			Console.WriteLine($"Please pick the number of the book you'd like to check out 1-{Books.Count} ");
@@ -74,6 +72,8 @@ namespace GroupProjectLibrary
 
 			
 		}
+
+		//return a book
 		public void ReturnBook(List<Book> ReturnBooks)
         {
 			Console.WriteLine("Please enter the number for the book you would like to return");
@@ -95,6 +95,10 @@ namespace GroupProjectLibrary
 }
 
 
+
+//-------------------------------
+//git reset --hard
+//used to remove chanes oyu made on your project, so oyu can copy whats on the repo
 
 
 

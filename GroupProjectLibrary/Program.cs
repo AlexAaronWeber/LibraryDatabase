@@ -7,8 +7,7 @@ Library library = new Library();
 library.DisplayAllBooks();
 
 
-
-Console.WriteLine();
+Console.WriteLine(); 
 bool runProgram = true;
 while (runProgram)
 {
@@ -20,13 +19,8 @@ while (runProgram)
     Console.WriteLine("Type 'Return' if you have a book you'd like to return.");
     string userOption = Console.ReadLine().ToLower().Trim();
 
-
-
-    //get user search testing--------------------------------------
     if (userOption == "search")
     {
-
-
         string search = library.GetUserSearch();
 
         List<Book> searchResult = library.books.Where(b => b.Title.ToLower().Contains(search) || b.Author.ToLower().Contains(search)).ToList();
@@ -42,34 +36,22 @@ while (runProgram)
                 Console.WriteLine($"We have the book {b.Title} by {b.Author}.");
 
             }
-            
         }
     }
     //checkout
-
-
     else if (userOption == "checkout")
     {
-
         library.CheckOut(library.books);
-        
     }
-
-
-
     else if (userOption == "return")
     {
         //return
         library.ReturnBook(library.books);
-        
-
     }
-
     else
     {
         Console.WriteLine("Not a valid entry");
     }
-    
     Validator.Validator.GetContinue("Would you like to go back to main menu?");
     Console.WriteLine();
 }

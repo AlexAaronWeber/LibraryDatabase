@@ -26,13 +26,19 @@ namespace GroupProjectLibrary
             DueDate = null;
         }
 
-
         //methods
+
         public override string ToString()
         {
-            return $"Title: {Title}, Author: {Author}, Status: {Status}, Due Date: {DueDate}";
+            if (Status == true)
+            {
+                return $"Title: {Title}, Author: {Author}, Status: Checked out, Due Date: {DueDate}";
+            }
+            else
+            {
+                return $"Title: {Title}, Author: {Author}, Status: On shelf";
+            }
         }
-
     }
 }
 
