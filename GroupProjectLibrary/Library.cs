@@ -48,11 +48,11 @@ namespace GroupProjectLibrary
 					foreach (Book book in books)
                     {
 						if (book.Author.ToLower().Contains(input) || book.Title.ToLower().Contains(input))
-						{
-							return input;
-						}
+							{ 
+								return input;						
+							}	
 					}
-				return "";
+					return "";
 		}
 		public void CheckOut (List<Book> Books )
         {
@@ -65,12 +65,14 @@ namespace GroupProjectLibrary
 				Books[entry].Status = true;
 				Books[entry].DueDate = DateOnly.FromDateTime(DateTime.Now).AddDays(14);
                 Console.WriteLine($"You have checked out {Books[entry].Title} it will be due on {Books[entry].DueDate}!");
+				
             }
             else if (Books[entry].Status == true)
             {
                 Console.WriteLine($"Unfortunetly, {Books[entry].Title} is already checked out. It should be returned on {Books[entry].DueDate}");
             }
 
+			
 		}
 		public void ReturnBook(List<Book> ReturnBooks)
         {
