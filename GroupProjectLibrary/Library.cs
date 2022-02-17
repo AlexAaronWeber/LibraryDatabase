@@ -24,26 +24,28 @@ namespace GroupProjectLibrary
 
         public void DisplayAllBooks()
         {
-            foreach (Book b in books)
-            {
-                Console.WriteLine(b);
-            }
-        }
+			for (int i = 0; i < books.Count; i++)
+			{
+				Console.WriteLine($"{ i + 1} { books[i].ToString()}");
+			}
+		}
+		
+	
 
-		//      public void showTitle(List<Book> books)
-		//{
-		//	foreach (Book b in books)
-		//	{
-		//		Console.WriteLine(b.Title);
-		//	}
-		//}
+	//      public void showTitle(List<Book> books)
+	//{
+	//	foreach (Book b in books)
+	//	{
+	//		Console.WriteLine(b.Title);
+	//	}
+	//}
 
-		//-------------------------------
-		//git reset --hard
-		//used to remove chanes oyu made on your project, so oyu can copy whats on the repo
+	//-------------------------------
+	//git reset --hard
+	//used to remove chanes oyu made on your project, so oyu can copy whats on the repo
 
 
-		public string GetUserSearch()
+	public string GetUserSearch()
 		{
 					Console.WriteLine("Search by author or title keyword");
 
@@ -61,13 +63,18 @@ namespace GroupProjectLibrary
 		public void CheckOut (List<Book> Books )
         {
 			Console.WriteLine($"Please pick the number of the book you'd like to check out 1-{Books.Count} ");
-			int entry = int.Parse(Console.ReadLine());
+			int entry = int.Parse(Console.ReadLine())- 1;
+			
 
 			if (Books[entry].Status == false )
             {
 				Books[entry].Status = true;
 				Books[entry].DueDate = DateOnly.FromDateTime(DateTime.Now).AddDays(14);
-
+                Console.WriteLine($"You have checked out {Books[entry].Title} it will be due on {Books[entry].DueDate}!");
+            }
+            else if (Books[entry].Status == true)
+            {
+                Console.WriteLine($"Unfortunetly, {Books[entry].Title} is already checked out. It should be returned on {Books[entry].DueDate}");
             }
         }
 	

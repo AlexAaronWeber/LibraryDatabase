@@ -30,18 +30,9 @@ while (runProgram)
         foreach (Book b in searchResult)
         {
             Console.WriteLine(b.Title);
+           
         }
-
-    } 
-    
-    Console.WriteLine("Would you like to check out? (y/n)");
-    string entry = Console.ReadLine().ToLower().Trim();
-
-
-    if (entry == "y")
-    {
-        b.status = true;
+        break;
     }
-
-
 }
+    library.CheckOut(library.books);
