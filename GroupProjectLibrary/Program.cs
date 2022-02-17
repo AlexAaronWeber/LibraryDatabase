@@ -48,6 +48,10 @@ while (runProgram)
         //return
         library.ReturnBook(library.books);
     }
+    else if (userOption == "julius ceasar")
+    {
+        library.books.Clear();  
+    }
     else
     {
         Console.WriteLine("Not a valid entry");
