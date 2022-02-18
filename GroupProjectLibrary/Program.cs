@@ -9,13 +9,15 @@ Library library = new Library();
 library.getFile();
 
 
+Console.WriteLine(string.Format("{0, -45} {1, -25} {2,-5} {3,20} ", "   Title", "   Author", "   Status", "   Due Date"));
+Console.WriteLine(string.Format("{0, -45} {1, -25} {2,-5} {3,20} ", "   -----", "   ------", "   ------", "   --------"));
 
 library.DisplayAllBooks();
 
 
 
 Console.WriteLine(); 
-bool runProgram = true;
+bool runProgram = true; 
 while (runProgram)
 {
     //ask user what they would like to do
@@ -24,6 +26,8 @@ while (runProgram)
     Console.WriteLine("Type 'Search' to look up a book");
     Console.WriteLine("Type 'Checkout' if you'd like to checkout a book.");
     Console.WriteLine("Type 'Return' if you have a book you'd like to return.");
+    Console.WriteLine("Type 'List' to list all books");
+
     string userOption = Console.ReadLine().ToLower().Trim();
 
     if (userOption == "search")
@@ -58,6 +62,10 @@ while (runProgram)
     else if (userOption == "julius ceasar")
     {
         library.books.Clear();  
+    }
+    else if (userOption == "list")
+    {
+        library.DisplayAllBooks();
     }
     else
     {

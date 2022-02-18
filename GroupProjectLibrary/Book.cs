@@ -33,13 +33,13 @@ namespace GroupProjectLibrary
             if (Status == true)
             {
                 //return $"Title: {Title}, Author: {Author}, Status: Checked out, Due Date: {DueDate}";
-                return string.Format("{0, -45} {1, 0} {2} {3} ", Title, Author, Status, DueDate);
+                return string.Format("{0, -45} {1, -25} {2,-5} {3,20} ", Title, Author, "Checked Out", $"Due: {DueDate}");
 
             }
             else
             {
                 //return $"Title: {Title}, Author: {Author}, Status: On shelf";
-                return string.Format("{0, -45} {1, 0} ", Title, Author);
+                return string.Format("{0, -45} {1, -25} {2,-5}", Title, Author, "On Shelf");
 
             }
         }
