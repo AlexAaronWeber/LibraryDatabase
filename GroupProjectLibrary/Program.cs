@@ -1,9 +1,15 @@
 ﻿using GroupProjectLibrary;
 
+
 Console.WriteLine("Welcome to the Library");
 Console.WriteLine();
 Console.WriteLine("Here's a list of our books: ");
 Library library = new Library();
+
+library.getFile();
+
+
+
 library.DisplayAllBooks();
 
 
@@ -13,7 +19,7 @@ bool runProgram = true;
 while (runProgram)
 {
     //ask user what they would like to do
-    Console.WriteLine("What would you liket to do today:");
+    Console.WriteLine("What would you like to do today:");
     Console.WriteLine();
     Console.WriteLine("Type 'Search' to look up a book");
     Console.WriteLine("Type 'Checkout' if you'd like to checkout a book.");
@@ -57,9 +63,9 @@ while (runProgram)
     {
         Console.WriteLine("Not a valid entry");
     }
-    Validator.Validator.GetContinue("Would you like to go back to main menu?");
+    runProgram = Validator.Validator.GetContinue("Would you like to go back to main menu?");
     Console.WriteLine();
 }
 
 
-
+library.SaveChanges();

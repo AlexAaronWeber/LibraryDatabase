@@ -7,21 +7,8 @@ namespace GroupProjectLibrary
 		//list of books
 		public List<Book> books = new List<Book>()
 		{
-			new Book ("The Prophet", "Kahlil Gibran", true, DateOnly.FromDateTime(DateTime.Now)),
-			//new Book ("The Prophet", "Kahlil Gibran", true, DateOnly.FromDateTime(DateTime.Now)),
-			//new Book ("The Midnight Library", "Matt Haig", false),
-			//new Book ("Black Cake", "Charmaine Wilkerson", false),
-			//new Book ("The Maid", "Nita Prose", true,  DateOnly.FromDateTime(DateTime.Now)),
-			//new Book ("The Lincoln Highway", "Amor Towles", true,  DateOnly.FromDateTime(DateTime.Now)),
-			//new Book ("The Christie Affair", "Nina De Gramont", true,  DateOnly.FromDateTime(DateTime.Now)),
-			//new Book ("The Last Thing He Told Me", "Laura Dave", false),
-			//new Book ("The Judge's List", "John Grisham", false),
-			//new Book ("Harry Potter and the Chamber of Secrets", "J.K Rowling", true,  DateOnly.FromDateTime(DateTime.Now)),
-			//new Book ("The Hobbit", "J.R. Tolkein", true,  DateOnly.FromDateTime(DateTime.Now)),
-			//new Book ("It", "Stephen King", false),
-			//new Book ("To the Lighthouse", "Virginia Wolfe", false),
-			//new Book ("The Lovely Bones", "Alice Sebold", true,  DateOnly.FromDateTime(DateTime.Now)),
-		};
+			
+        };
 
 		//-----------------------------Methods-----------------------------
 
@@ -98,12 +85,33 @@ namespace GroupProjectLibrary
             {
 				List<Book> tempBooks = new List<Book>()
 				{
-					new Book ("The Prophet", "Kahlil Gibran", true, DateOnly.FromDateTime(DateTime.Now))
+					new Book ("The Prophet", "Kahlil Gibran", true, DateOnly.FromDateTime(DateTime.Now)),
+					new Book ("The Midnight Library", "Matt Haig", false),
+					new Book ("Black Cake", "Charmaine Wilkerson", false),
+					new Book ("The Maid", "Nita Prose", true,  DateOnly.FromDateTime(DateTime.Now)),
+					new Book ("The Lincoln Highway", "Amor Towles", true,  DateOnly.FromDateTime(DateTime.Now)),
+					new Book ("The Christie Affair", "Nina De Gramont", true,  DateOnly.FromDateTime(DateTime.Now)),
+					new Book ("The Last Thing He Told Me", "Laura Dave", false),
+					new Book ("The Judge's List", "John Grisham", false),
+					new Book ("Harry Potter and the Chamber of Secrets", "J.K Rowling", true,  DateOnly.FromDateTime(DateTime.Now)),
+					new Book ("The Hobbit", "J.R. Tolkein", true,  DateOnly.FromDateTime(DateTime.Now)),
+					new Book ("It", "Stephen King", false),
+					new Book ("To the Lighthouse", "Virginia Wolfe", false),
+					new Book ("The Lovely Bones", "Alice Sebold", true,  DateOnly.FromDateTime(DateTime.Now)),
 				};
 				StreamWriter writer = new StreamWriter(filepath);
 				foreach (Book b in tempBooks)
 				{
-					writer.WriteLine($"{b.Title}/{b.Author}/{b.Status}/{b.DueDate}");
+					if(b.DueDate != null)
+                    {
+						writer.WriteLine($"{b.Title}_{b.Author}_{b.Status}_{b.DueDate}");
+					}
+                    else
+                    {
+						writer.WriteLine($"{b.Title}_{b.Author}_{b.Status}");
+
+					}
+						
 				}
 				//Save file
 				writer.Close();
@@ -122,13 +130,22 @@ namespace GroupProjectLibrary
 				else
 				{
 					//Console.WriteLine(Line);
-					string[] values = Line.Split("/");
+					string[] values = Line.Split("_");
 					string Title = values[0];
 					string Author = values[1];
 					bool Status = bool.Parse(values[2]);
-					DateOnly DueDate = DateOnly.Parse(values[3]);	
-					Book newBook = new Book(Title, Author, Status, DueDate);
-					books.Add(newBook);
+                    if(values.Length == 4)
+                    {
+						DateOnly DueDate = DateOnly.Parse(values[3]);
+						Book newBook = new Book(Title, Author, Status, DueDate);
+						books.Add(newBook);
+					}
+                    else
+                    {
+						Book newBook = new Book(Title, Author, Status);
+						books.Add(newBook);
+					}
+					
 				}
 			}
 			ClassReader.Close();
@@ -142,9 +159,19 @@ namespace GroupProjectLibrary
 			StreamWriter BooksWriter = new StreamWriter(filepath);
 			foreach (Book book in books)
             {
-				BooksWriter.WriteLine($""book.Title);
+				if (book.DueDate != null)
+                {
+					BooksWriter.WriteLine($"{book.Title}_{book.Author}_{book.Status}_{book.DueDate}");
+				}
+				else
+                {
+					BooksWriter.WriteLine($"{book.Title}_{book.Author}_{book.Status}");
+
+				}
             }
+			BooksWriter.Close();
         }
+	
 
 
 	}
