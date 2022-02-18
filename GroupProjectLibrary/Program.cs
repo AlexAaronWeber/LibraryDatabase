@@ -57,7 +57,12 @@ while (runProgram)
     else if (userOption == "return")
     {
         //return
-        library.ReturnBook(library.books);
+        List<Book> checkedOut = library.books.Where(b => b.Status == true).ToList();
+
+        library.DisplayCheckedOut(checkedOut);
+        library.ReturnBook(checkedOut);
+        //library.ReturnBook(library.books);
+
     }
     else if (userOption == "julius ceasar")
     {
@@ -74,6 +79,5 @@ while (runProgram)
     runProgram = Validator.Validator.GetContinue("Would you like to go back to main menu?");
     Console.WriteLine();
 }
-
 
 library.SaveChanges();

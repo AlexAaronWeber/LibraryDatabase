@@ -12,7 +12,7 @@ namespace GroupProjectLibrary
 
 		//-----------------------------Methods-----------------------------
 
-		//display books
+		//display a list of all books
 		public void DisplayAllBooks()
 		{
 			for (int i = 0; i < books.Count; i++)
@@ -24,10 +24,9 @@ namespace GroupProjectLibrary
 			{
 				Console.WriteLine($"{ i + 1} { books[i].ToString()}");
 			}
-		
 		}
 
-		//get search
+		//get the user's search
 		public string GetUserSearch()
 		{
 			Console.WriteLine("Search by author or title keyword");
@@ -44,7 +43,7 @@ namespace GroupProjectLibrary
 			return "";
 		}
 
-		//checkout
+		//check out a book
 		public void CheckOut(List<Book> Books)
 		{
 			Console.WriteLine($"Please pick the number of the book you'd like to check out 1-{Books.Count} ");
@@ -62,8 +61,6 @@ namespace GroupProjectLibrary
 			{
 				Console.WriteLine($"Unfortunetly, {Books[entry].Title} is already checked out. It should be returned on {Books[entry].DueDate}");
 			}
-
-
 		}
 
 		//return a book
@@ -84,9 +81,23 @@ namespace GroupProjectLibrary
 			}
 		}
 
+		//displays checked out books
+		public void DisplayCheckedOut(List<Book> list)
+		{
+			for (int i = 0; i < list.Count; i++)
+				if (i <= 8)
+				{
+					Console.WriteLine($"{ i + 1}  { list[i].ToString()}");
+				}
+				else
+				{
+					Console.WriteLine($"{ i + 1} { list[i].ToString()}");
+				}
+		}
+
+		//gets the File if it already exists and creates one with starting values if it does not exist
 		public void getFile()
 		{
-
 			if (File.Exists(filepath) == false)
             {
 				List<Book> tempBooks = new List<Book>()
@@ -115,9 +126,7 @@ namespace GroupProjectLibrary
                     else
                     {
 						writer.WriteLine($"{b.Title}_{b.Author}_{b.Status}");
-
 					}
-						
 				}
 				//Save file
 				writer.Close();
@@ -151,16 +160,13 @@ namespace GroupProjectLibrary
 						Book newBook = new Book(Title, Author, Status);
 						books.Add(newBook);
 					}
-					
 				}
 			}
 			ClassReader.Close();
-
 		}
 
+		//save changes
 		public void SaveChanges()
-
-
         {
 			StreamWriter BooksWriter = new StreamWriter(filepath);
 			foreach (Book book in books)
@@ -177,7 +183,6 @@ namespace GroupProjectLibrary
             }
 			BooksWriter.Close();
         }
-	
 
 
 	}
