@@ -29,6 +29,7 @@ namespace Validator
             }
             return result;
         }
+
         //overloaded version
         public static bool GetContinue(string message)
         {
@@ -40,6 +41,7 @@ namespace Validator
                 if (choice == "y" || choice == "yes")
                 {
                     result = true;
+                    //Console.Clear();
                     break;
                 }
                 else if (choice == "n" || choice == "no")
@@ -54,6 +56,7 @@ namespace Validator
             }
             return result;
         }
+
         //valid entry
         public static bool InRange(int value, int min, int max)
         {

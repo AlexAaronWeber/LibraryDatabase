@@ -45,7 +45,6 @@ while (runProgram)
             foreach (Book b in searchResult)
             {
                 Console.WriteLine($"We have the book {b.Title} by {b.Author}.");
-
             }
         }
     }
@@ -58,26 +57,29 @@ while (runProgram)
     {
         //return
         List<Book> checkedOut = library.books.Where(b => b.Status == true).ToList();
-
         library.DisplayCheckedOut(checkedOut);
         library.ReturnBook(checkedOut);
         //library.ReturnBook(library.books);
-
     }
     else if (userOption == "julius ceasar")
     {
-        library.books.Clear();  
+        library.books.Clear();
+        Console.Clear();
     }
     else if (userOption == "list")
     {
         library.DisplayAllBooks();
-    }
+    } 
     else
     {
         Console.WriteLine("Not a valid entry");
     }
+
+
     runProgram = Validator.Validator.GetContinue("Would you like to go back to main menu?");
-    Console.WriteLine();
+    
 }
+
+//Console.Clear();
 
 library.SaveChanges();
