@@ -32,11 +32,15 @@ namespace GroupProjectLibrary
         {
             if (Status == true)
             {
-                return $"Title: {Title}, Author: {Author}, Status: Checked out, Due Date: {DueDate}";
+                //return $"Title: {Title}, Author: {Author}, Status: Checked out, Due Date: {DueDate}";
+                return string.Format("{0, -45} {1, 0} {2} {3} ", Title, Author, Status, DueDate);
+
             }
             else
             {
-                return $"Title: {Title}, Author: {Author}, Status: On shelf";
+                //return $"Title: {Title}, Author: {Author}, Status: On shelf";
+                return string.Format("{0, -45} {1, 0} ", Title, Author);
+
             }
         }
     }

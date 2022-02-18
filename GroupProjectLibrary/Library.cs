@@ -17,7 +17,7 @@ namespace GroupProjectLibrary
 		{
 			for (int i = 0; i < books.Count; i++)
 			{
-				Console.WriteLine($"{ i + 1} { books[i].ToString()}");
+				Console.WriteLine($"{ i + 1}  { books[i].ToString()}");
 			}
 		}
 
