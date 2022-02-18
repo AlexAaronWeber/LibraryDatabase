@@ -16,9 +16,15 @@ namespace GroupProjectLibrary
 		public void DisplayAllBooks()
 		{
 			for (int i = 0; i < books.Count; i++)
+			if(i<=8)
 			{
 				Console.WriteLine($"{ i + 1}  { books[i].ToString()}");
 			}
+			else
+			{
+				Console.WriteLine($"{ i + 1} { books[i].ToString()}");
+			}
+		
 		}
 
 		//get search
