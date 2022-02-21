@@ -30,6 +30,9 @@ namespace GroupProjectLibrary
 		//get the user's search
 		public string GetUserSearch()
 		{
+
+
+
 			Console.WriteLine("Search by author or title keyword");
 
 			string input = Console.ReadLine().ToLower().Trim();

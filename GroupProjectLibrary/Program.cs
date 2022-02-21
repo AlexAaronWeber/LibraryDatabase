@@ -57,9 +57,17 @@ while (runProgram)
     {
         //return
         List<Book> checkedOut = library.books.Where(b => b.Status == true).ToList();
-        library.DisplayCheckedOut(checkedOut);
-        library.ReturnBook(checkedOut);
-        //library.ReturnBook(library.books);
+        if (checkedOut.Count > 0)
+        {
+            library.DisplayCheckedOut(checkedOut);
+            library.ReturnBook(checkedOut);
+            //library.ReturnBook(library.books);
+        }
+        else
+        {
+            Console.WriteLine("No books to return!");
+        }
+
     }
     else if (userOption == "julius ceasar")
     {
