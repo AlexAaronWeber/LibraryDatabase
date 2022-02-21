@@ -32,42 +32,18 @@ while (runProgram)
 
     if (userOption == "search")
     {
-        string search = library.GetUserSearch();
-
-        List<Book> searchResult = library.books.Where(b => b.Title.ToLower().Contains(search) || b.Author.ToLower().Contains(search)).ToList();
-
-        if (search.Length == 0)
-        {
-            Console.WriteLine("Try again");
-        }
-        else
-        {
-            foreach (Book b in searchResult)
-            {
-                Console.WriteLine($"We have the book {b.Title} by {b.Author}.");
-            }
-        }
+        library.GetUserSearch();
+ 
     }
     //checkout
     else if (userOption == "checkout")
     {
-        library.CheckOut(library.books);
+        library.CheckOut();
     }
     else if (userOption == "return")
     {
         //return
-        List<Book> checkedOut = library.books.Where(b => b.Status == true).ToList();
-        if (checkedOut.Count > 0)
-        {
-            library.DisplayCheckedOut(checkedOut);
-            library.ReturnBook(checkedOut);
-            //library.ReturnBook(library.books);
-        }
-        else
-        {
-            Console.WriteLine("No books to return!");
-        }
-
+        library.ifNeedsReturn();
     }
     else if (userOption == "julius ceasar")
     {
@@ -85,9 +61,10 @@ while (runProgram)
 
 
     runProgram = Validator.Validator.GetContinue("Would you like to go back to main menu?");
-    
+
+    Console.Clear();
 }
 
-//Console.Clear();
+
 
 library.SaveChanges();

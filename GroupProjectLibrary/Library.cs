@@ -28,42 +28,48 @@ namespace GroupProjectLibrary
 		}
 
 		//get the user's search
-		public string GetUserSearch()
+		public void  GetUserSearch()
 		{
-
-
 
 			Console.WriteLine("Search by author or title keyword");
 
 			string input = Console.ReadLine().ToLower().Trim();
 
-			foreach (Book book in books)
+			List<Book> searchResult = books.Where(b => b.Title.ToLower().Contains(input) || b.Author.ToLower().Contains(input)).ToList();
+
+			foreach (Book book in searchResult)
 			{
 				if (book.Author.ToLower().Contains(input) || book.Title.ToLower().Contains(input))
 				{
-					return input;
+					Console.WriteLine($"We have the book {book.Title} by {book.Author}.");
 				}
 			}
-			return "";
+
+			if (searchResult.Count == 0)
+			{
+				Console.WriteLine("Try again");
+			}
+
+
 		}
 
 		//check out a book
-		public void CheckOut(List<Book> Books)
+		public void CheckOut()
 		{
-			Console.WriteLine($"Please pick the number of the book you'd like to check out 1-{Books.Count} ");
+			Console.WriteLine($"Please pick the number of the book you'd like to check out 1-{books.Count} ");
 			int entry = int.Parse(Console.ReadLine()) - 1;
 
 
-			if (Books[entry].Status == false)
+			if (books[entry].Status == false)
 			{
-				Books[entry].Status = true;
-				Books[entry].DueDate = DateOnly.FromDateTime(DateTime.Now).AddDays(14);
-				Console.WriteLine($"You have checked out {Books[entry].Title} it will be due on {Books[entry].DueDate}!");
+				books[entry].Status = true;
+				books[entry].DueDate = DateOnly.FromDateTime(DateTime.Now).AddDays(14);
+				Console.WriteLine($"You have checked out {books[entry].Title} it will be due on {books[entry].DueDate}!");
 
 			}
-			else if (Books[entry].Status == true)
+			else if (books[entry].Status == true)
 			{
-				Console.WriteLine($"Unfortunetly, {Books[entry].Title} is already checked out. It should be returned on {Books[entry].DueDate}");
+				Console.WriteLine($"Unfortunetly, {books[entry].Title} is already checked out. It should be returned on {books[entry].DueDate}");
 			}
 		}
 
@@ -83,6 +89,22 @@ namespace GroupProjectLibrary
 			{
 				Console.WriteLine($"{ReturnBooks[entry].Title} is not checked out.");
 			}
+		}
+
+		public void ifNeedsReturn()
+        {
+			List<Book> checkedOut = books.Where(b => b.Status == true).ToList();
+			if (checkedOut.Count > 0)
+			{
+				DisplayCheckedOut(checkedOut);
+				ReturnBook(checkedOut);
+				//library.ReturnBook(library.books);
+			}
+			else
+			{
+				Console.WriteLine("No books to return!");
+			}
+
 		}
 
 		//displays checked out books

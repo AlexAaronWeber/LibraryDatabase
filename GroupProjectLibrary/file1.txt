@@ -2,7 +2,7 @@ The Prophet_Kahlil Gibran_False
 The Midnight Library_Matt Haig_False
 Black Cake_Charmaine Wilkerson_False
 The Maid_Nita Prose_False
-The Lincoln Highway_Amor Towles_False
+The Lincoln Highway_Amor Towles_True_3/7/2022
 The Christie Affair_Nina De Gramont_False
 The Last Thing He Told Me_Laura Dave_False
 The Judge's List_John Grisham_False
