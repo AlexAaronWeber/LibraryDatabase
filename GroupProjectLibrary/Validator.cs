@@ -41,7 +41,7 @@ namespace Validator
                 if (choice == "y" || choice == "yes")
                 {
                     result = true;
-                    //Console.Clear();
+                    Console.Clear();
                     break;
                 }
                 else if (choice == "n" || choice == "no")
