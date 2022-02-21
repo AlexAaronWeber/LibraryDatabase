@@ -48,7 +48,7 @@ while (runProgram)
     else if (userOption == "julius ceasar")
     {
         library.books.Clear();
-        Console.Clear();
+        //Console.Clear();
     }
     else if (userOption == "list")
     {

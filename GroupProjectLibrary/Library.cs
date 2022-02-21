@@ -25,6 +25,11 @@ namespace GroupProjectLibrary
 			{
 				Console.WriteLine($"{ i + 1} { books[i].ToString()}");
 			}
+
+			if (books.Count == 0)
+            {
+                Console.WriteLine("You have burned down the library of Alexandria and have set human civilization back a few hundred years");
+            }
 		}
 
 		//get the user's search
