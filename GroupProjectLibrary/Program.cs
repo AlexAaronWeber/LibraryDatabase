@@ -61,8 +61,6 @@ while (runProgram)
 
 
     runProgram = Validator.Validator.GetContinue("Would you like to go back to main menu?");
-
-    Console.Clear();
 }
 
 
